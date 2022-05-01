@@ -1,15 +1,21 @@
-export type DetailValue = {
-  url: string
-}
+// export type DetailValue = {
+//   url: string
+//   descr: string
+//   alt_descr: string
+//   likes: number|null
+// }
 
 export type DetailState = {
   url: string;
   isActive: boolean;
+  descr: string
+  alt_descr: string
+  likes: number|null
 };
 
 export type DetailAction = {
   type: string;
-  value: DetailValue;
+  value: DetailState;
 };
 
 export type CtxTypes = {

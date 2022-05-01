@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
-  const { imgDetail, dispatchImgDetail } = useCtx() as CtxTypes;
+  const { dispatchImgDetail } = useCtx() as CtxTypes;
 
   return (
     <>
@@ -19,7 +19,18 @@ const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
        bg-gray-400 overflow-hidden relative group`}
       >
         <img
-          onClick={() => dispatchImgDetail({type: 'ON', value: {url: img.urls.regular, }})}
+          onClick={() =>
+            dispatchImgDetail({
+              type: 'TOGGLE',
+              value: {
+                isActive: true,
+                url: img.urls.regular,
+                descr: img.description,
+                alt_descr: img.alt_description,
+                likes: img.likes,
+              },
+            })
+          }
           className={`${shouldSpan ? 'row-span-2' : ''} cursor-pointer h-full outline object-cover`}
           src={img.urls.regular}
           alt={img.description ?? img.alt_description}

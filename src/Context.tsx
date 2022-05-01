@@ -5,12 +5,11 @@ const ctx = createContext<CtxTypes | null>(null);
 export const useCtx = () => useContext(ctx);
 
 const detailReducer = (state: DetailState, action: DetailAction): DetailState => {
+  console.log('s', state.isActive);
   switch (action.type) {
-    case 'ON':
-      return { ...state, url: state.url, isActive: !state.isActive };
-    case 'OFF':
-      return {...state, isActive: false}
-      default:
+    case 'TOGGLE':
+      return { ...action.value };
+    default:
       return state;
   }
 };
@@ -18,6 +17,9 @@ const detailReducer = (state: DetailState, action: DetailAction): DetailState =>
 const initialDetail: DetailState = {
   url: '',
   isActive: false,
+  descr: '',
+  alt_descr: '',
+  likes: null,
 };
 
 interface Props {

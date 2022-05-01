@@ -9,8 +9,6 @@ import ImgDetail from './components/ImgDetail';
 function App() {
   const {imgDetail} = useCtx() as CtxTypes;
 
-  console.log(imgDetail);
-
   return (
     <>
       <Header />
