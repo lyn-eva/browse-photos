@@ -6,7 +6,7 @@ import { images } from '../images';
 
 const Gallery: React.FC = () => {
   return (
-    <main className='mt-[min(5vw,4rem)] pb-8 grow overflow-auto'>
+    <main className='mt-[min(5vw,3rem)] pb-8 grow overflow-auto'>
       <section className='grid grid-cols-3 gap-4'>
         {images.results.map((img, i) => {  
         return (

@@ -1,16 +1,13 @@
-// export type DetailValue = {
-//   url: string
-//   descr: string
-//   alt_descr: string
-//   likes: number|null
-// }
-
 export type DetailState = {
-  url: string;
   isActive: boolean;
-  descr: string
-  alt_descr: string
-  likes: number|null
+  url?: string;
+  descr?: string
+  alt_descr?: string
+  likes?: number|null
+  name?: string
+  username?: string
+  download_link?: string
+  unsplash_link?: string
 };
 
 export type DetailAction = {

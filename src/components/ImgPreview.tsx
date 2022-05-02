@@ -28,6 +28,10 @@ const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
                 descr: img.description,
                 alt_descr: img.alt_description,
                 likes: img.likes,
+                name: img.user.name,
+                username: img.user.username,
+                download_link: img.links.download,
+                unsplash_link: img.links.html
               },
             })
           }
@@ -53,7 +57,6 @@ const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
           </div>
         </div>
       </div>
-      {/* {isActive && <ImgDetail />} */}
     </>
   );
 };

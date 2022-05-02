@@ -5,7 +5,6 @@ const ctx = createContext<CtxTypes | null>(null);
 export const useCtx = () => useContext(ctx);
 
 const detailReducer = (state: DetailState, action: DetailAction): DetailState => {
-  console.log('s', state.isActive);
   switch (action.type) {
     case 'TOGGLE':
       return { ...action.value };
