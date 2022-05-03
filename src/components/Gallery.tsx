@@ -9,7 +9,7 @@ interface Props {
 const Gallery: React.FC<Props> = ({ photos }) => {
   return (
     <main className='mt-[min(5vw,3rem)] pb-8 grow overflow-auto'>
-      <section className='grid grid-cols-3 gap-4'>
+      <section className='grid grid-cols-3 gap-4 relative'>
         {photos.map((img, i) => {
           return (
             <ImgPreview

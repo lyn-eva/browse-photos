@@ -30,6 +30,6 @@ export type DetailAction = {
 export type CtxTypes = {
   imgDetail: DetailState;
   dispatchImgDetail: React.Dispatch<DetailAction>;
-  addToLocalStorage: (id: string, url: string) => void;
+  addToLocalStorage: () => void;
   removeFromLocalStorage: (id: string) => void;
 };

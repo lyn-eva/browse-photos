@@ -2,8 +2,8 @@ import { Icon } from '@iconify/react';
 import { CtxTypes } from '../Types';
 import { useCtx } from '../Context';
 
-const ImgDetail: React.FC = () => {
-  const { imgDetail, dispatchImgDetail, addToLocalStorage } = useCtx() as CtxTypes;
+const ImgDetail: React.FC<{isFavorite?: boolean}> = ({isFavorite}) => {
+  const { imgDetail, dispatchImgDetail, addToLocalStorage, removeFromLocalStorage } = useCtx() as CtxTypes;
 
   const handleClick = () => {
     dispatchImgDetail({
@@ -11,6 +11,18 @@ const ImgDetail: React.FC = () => {
       value: {},
     });
   };
+  
+  const addToFavorite = () => {
+    addToLocalStorage();
+  };
+  
+  const removeFromFavorite = () => {
+    removeFromLocalStorage(imgDetail.id ?? '');
+    dispatchImgDetail({
+      type: 'TOGGLE',
+      value: {},
+    });
+  }
 
   return (
     <main className='overflow-auto pb-16 bg-white fixed top-0 right-0 w-full h-full z-10'>
@@ -52,7 +64,7 @@ const ImgDetail: React.FC = () => {
         </div>
         <div className='flex gap-3 mt-3'>
           <a
-            className='bg-blue-400 text-white px-3 py-1 rounded-md'
+            className='bg-blue-400 hover:bg-sky-500 text-white px-3 py-1 rounded-md'
             aria-disabled='false'
             href={imgDetail.unsplash_link}
             rel='noreferrer'
@@ -62,7 +74,7 @@ const ImgDetail: React.FC = () => {
             See Original
           </a>
           <a
-            className='bg-green-400 text-white px-3 py-1 rounded-md'
+            className='bg-green-400 hover:bg-sky-500 text-white px-3 py-1 rounded-md'
             aria-disabled='false'
             href={`${imgDetail.download_link}&amp;force=true`}
             rel='noreferrer'
@@ -71,10 +83,10 @@ const ImgDetail: React.FC = () => {
             Download
           </a>
           <button
-            onClick={() => addToLocalStorage(imgDetail.id ?? '', imgDetail.photo_link ?? '')}
-            className='bg-orange-400 text-white px-3 py-1 rounded-md'
+            onClick={isFavorite ? removeFromFavorite : addToFavorite}
+            className='bg-orange-400 hover:bg-sky-500 text-white px-3 py-1 rounded-md'
           >
-            Add to Favorite
+            {isFavorite ? 'Remove from Favorite': 'Add to Favorite'}
           </button>
         </div>
       </section>
