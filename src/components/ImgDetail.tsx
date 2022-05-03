@@ -1,18 +1,15 @@
-import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { CtxTypes } from '../Types';
 import { useCtx } from '../Context';
 
 const ImgDetail: React.FC = () => {
   const { imgDetail, dispatchImgDetail, addToLocalStorage } = useCtx() as CtxTypes;
-  const navigate = useNavigate();
 
   const handleClick = () => {
     dispatchImgDetail({
       type: 'TOGGLE',
       value: {},
     });
-    navigate('../');
   };
 
   return (
