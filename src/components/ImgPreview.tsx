@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useCtx } from '../Context';
 import { CtxTypes } from '../Types';
@@ -12,6 +13,27 @@ interface Props {
 const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
   const { dispatchImgDetail } = useCtx() as CtxTypes;
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    dispatchImgDetail({
+      type: 'TOGGLE',
+      value: {
+        url: img.urls.regular,
+        descr: img.description,
+        alt_descr: img.alt_description,
+        likes: img.likes,
+        name: img.user.name,
+        username: img.user.username,
+        download_link: img.links.download,
+        unsplash_link: img.links.html,
+        id: img.id,
+        photo_link: img.urls.regular,
+      },
+    });
+    navigate(img.id);
+  };
+
   return (
     <>
       <div
@@ -19,22 +41,7 @@ const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
        bg-gray-400 overflow-hidden relative group`}
       >
         <img
-          onClick={() =>
-            dispatchImgDetail({
-              type: 'TOGGLE',
-              value: {
-                isActive: true,
-                url: img.urls.regular,
-                descr: img.description,
-                alt_descr: img.alt_description,
-                likes: img.likes,
-                name: img.user.name,
-                username: img.user.username,
-                download_link: img.links.download,
-                unsplash_link: img.links.html
-              },
-            })
-          }
+          onClick={handleClick}
           className={`${shouldSpan ? 'row-span-2' : ''} cursor-pointer h-full outline object-cover`}
           src={img.urls.regular}
           alt={img.description ?? img.alt_description}

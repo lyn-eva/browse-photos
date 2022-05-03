@@ -1,5 +1,4 @@
 export type DetailState = {
-  isActive: boolean;
   url?: string;
   descr?: string
   alt_descr?: string
@@ -7,7 +6,9 @@ export type DetailState = {
   name?: string
   username?: string
   download_link?: string
-  unsplash_link?: string
+  unsplash_link?: string,
+  photo_link?: string
+  id?: string
 };
 
 export type DetailAction = {
@@ -18,4 +19,6 @@ export type DetailAction = {
 export type CtxTypes = {
   imgDetail: DetailState;
   dispatchImgDetail: React.Dispatch<DetailAction>;
+  addToLocalStorage: (id: string, url: string) => void;
+  removeFromLocalStorage: (id: string) => void;
 };

@@ -1,24 +1,25 @@
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { CtxTypes } from '../Types';
 import { useCtx } from '../Context';
 
 const ImgDetail: React.FC = () => {
-  const { imgDetail, dispatchImgDetail } = useCtx() as CtxTypes;
+  const { imgDetail, dispatchImgDetail, addToLocalStorage } = useCtx() as CtxTypes;
+  const navigate = useNavigate();
 
-  // const json = JSON.stringify({"url":"https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1\u0026q=85\u0026fm=jpg\u0026crop=entropy\u0026cs=srgb"})
-  // console.log(URL.createObjectURL(new Blob([json], {type: 'image/jpg'})));
+  const handleClick = () => {
+    dispatchImgDetail({
+      type: 'TOGGLE',
+      value: {},
+    });
+    navigate('../');
+  };
+
   return (
-    <div className='overflow-auto pb-16 bg-white fixed top-0 right-0 w-full h-full z-10'>
+    <main className='overflow-auto pb-16 bg-white fixed top-0 right-0 w-full h-full z-10'>
       <section className='w-11/12 mx-auto'>
         <header className='flex justify-end py-7'>
-          <button
-            onClick={() =>
-              dispatchImgDetail({
-                type: 'TOGGLE',
-                value: { isActive: false },
-              })
-            }
-          >
+          <button onClick={handleClick}>
             <Icon className='w-7 h-7' icon='akar-icons:cross' />
           </button>
         </header>
@@ -68,15 +69,19 @@ const ImgDetail: React.FC = () => {
             aria-disabled='false'
             href={`${imgDetail.download_link}&amp;force=true`}
             rel='noreferrer'
-            download='torii.jpg'
-            target='_blank'
+            download='torii.jpg' // not working :(
           >
             Download
           </a>
-          <button className='bg-orange-400 text-white px-3 py-1 rounded-md'>Add to Favorite</button>
+          <button
+            onClick={() => addToLocalStorage(imgDetail.id ?? '', imgDetail.photo_link ?? '')}
+            className='bg-orange-400 text-white px-3 py-1 rounded-md'
+          >
+            Add to Favorite
+          </button>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
