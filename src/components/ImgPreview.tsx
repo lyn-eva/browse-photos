@@ -36,7 +36,7 @@ const ImgPreview: React.FC<Props> = ({ img, shouldSpan }) => {
       >
         <img
           onClick={handleClick}
-          className={`${shouldSpan ? 'row-span-2' : ''} cursor-pointer h-full outline object-cover`}
+          className={`${shouldSpan ? 'row-span-2 w-full' : 'w-full'} cursor-pointer outline object-cover`}
           src={img.url}
           alt={img.descr ?? img.alt_descr}
         />

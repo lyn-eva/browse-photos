@@ -13,7 +13,7 @@ export type DetailState = {
 };
 
 export type API_Types = {
-  urls: { regular: string };
+  urls: { thumb: string };
   description: string;
   alt_description: string;
   likes: number;
@@ -33,3 +33,11 @@ export type CtxTypes = {
   addToLocalStorage: () => void;
   removeFromLocalStorage: (id: string) => void;
 };
+
+export type Param = {
+  query: string,
+  amount: string,
+  orderBy: string,
+  orientation: string
+
+}
