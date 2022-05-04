@@ -14,7 +14,10 @@ function useUnsplash(param: Param) {
       );
       const data = await raw.json();
       const filteredData = data.results.map((img: API_Types) => ({
-        url: img.urls.thumb,
+        width: img.width,
+        height: img.height,
+        regular: img.urls.regular,
+        small: img.urls.small,
         descr: img.description,
         alt_descr: img.alt_description,
         likes: img.likes,

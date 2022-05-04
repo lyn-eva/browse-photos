@@ -1,6 +1,9 @@
-export type DetailState = {
+export interface DetailState  {
+  height?: number,
+  width?: number,
   isActive?: boolean;
-  url?: string;
+  regular?: string;
+  small?: string;
   descr?: string;
   alt_descr?: string;
   likes?: number | null;
@@ -10,10 +13,13 @@ export type DetailState = {
   unsplash_link?: string;
   photo_link?: string;
   id?: string;
+  range?(start: number | undefined, end: any, step: number | undefined, callback: any): void
 };
 
 export type API_Types = {
-  urls: { thumb: string };
+  width: number;
+  height: number;
+  urls: { small: string, regular: string };
   description: string;
   alt_description: string;
   likes: number;

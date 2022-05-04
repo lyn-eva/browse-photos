@@ -30,7 +30,7 @@ const SearchBar: React.FC<Props> = ({ setParam }) => {
           className='focus:border-gray-800 box-border focus:border-2 mx-auto rounded-sm w-11/12 max-w-[18rem] px-2 outline-none sm:h-8'
         />
         <input
-          className='bg-gray-800  text-white px-3 py-1'
+          className='bg-gray-800 hover:bg-blue-600 cursor-pointer text-white px-3 py-1'
           type='submit'
           value='browse'
         />
@@ -42,14 +42,14 @@ const SearchBar: React.FC<Props> = ({ setParam }) => {
         </div>
         <div className='flex items-center gap-2'>
           <label>order by</label>
-          <select ref={orderRef}>
+          <select ref={orderRef} className='h-6'>
             <option>relevant</option>
             <option>latest</option>
           </select>
         </div>
         <div className='flex items-center gap-2'>
           <label>orientation</label>
-          <select ref={orientRef}>
+          <select ref={orientRef} className='h-6'>
             <option>all</option>
             <option>landscape</option>
             <option>potrait</option>

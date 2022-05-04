@@ -35,7 +35,7 @@ const ImgDetail: React.FC<{isFavorite?: boolean}> = ({isFavorite}) => {
         <div className='text-right'>
           <img
             className='w-full h-auto rounded-sm'
-            src={imgDetail.url}
+            src={imgDetail.regular}
             alt={imgDetail.descr ?? imgDetail.alt_descr}
           />
           <p className='text-sm mt-1 text-black'>
