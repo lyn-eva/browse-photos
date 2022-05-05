@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import { API_Types, Param } from '../Types';
 
 function useUnsplash(param: Param) {
-  const [photos, setPhotos] = useState([]);
-  const {query, amount, orderBy, orientation} = param;
-
-  console.log(param);
+  const [photos, setPhotos] = useState(null);
+  
   useEffect(() => {
-    if (!query) return;
+    if (!param.query) return;
+    const {query, amount, orderBy, orientation} = param;
     (async () => {
       const raw = await fetch(
         `https://api.unsplash.com/search/photos?page=1&query=${query}&per_page=${amount}&order_by=${orderBy}${orientation && orientation !== 'all' ? '&orientation='+orientation : ''}&client_id=${process.env.REACT_APP_CLIENT_ID}`
@@ -28,7 +27,6 @@ function useUnsplash(param: Param) {
         id: img.id,
         profile_link: img.user.links.html,
       }));
-      console.log(filteredData);
       setPhotos(filteredData);
     })();
   }, [param, setPhotos]);

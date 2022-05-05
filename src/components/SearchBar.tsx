@@ -38,7 +38,7 @@ const SearchBar: React.FC<Props> = ({ setParam }) => {
       <div className='flex justify-evenly mt-4'>
         <div className='flex items-center gap-2'>
           <label className=''>amount</label>
-          <input defaultValue='10' ref={amountRef} className='max-w-[5rem] pl-2' type='number' />
+          <input defaultValue='10' min='1' max='30' ref={amountRef} className='max-w-[5rem] pl-2' type='number' />
         </div>
         <div className='flex items-center gap-2'>
           <label>order by</label>
